@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var decimalTextField: UITextField!
     @IBOutlet weak var hexadecimalTextField: UITextField!
     
+    // Detection mode selection
+    @IBOutlet weak var detectionMode: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     // Called when textFieldDidEndEditing
-    @IBAction func updateResults(_ sender: UITextField) {
+    @IBAction func updateResults(_ sender: Any?) {
         
         // Calculation variables
         let input: String
@@ -61,21 +63,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Read in the input, parse base and inputNumber
             input = inputTextField.text!
             
-            // Read the base information from the format
-            if input.hasPrefix(binaryPrefix) {
-                base = 2
-                workingSubstring = input.suffix(input.count - binaryPrefix.count)
-            } else if input.hasPrefix(hexPrefix) {
-                base = 16
-                workingSubstring = input.suffix(input.count - hexPrefix.count)
-            } else if input.hasPrefix(octalPrefix) {
-                base = 8
-                workingSubstring = input.suffix(input.count - octalPrefix.count)
+            // Read the base information
+            if detectionMode.selectedSegmentIndex != 0 {
+                // Manual Selection Mode
+                switch(detectionMode.selectedSegmentIndex){
+                case 1:
+                    base = 2
+                    workingSubstring = input.suffix(input.count - binaryPrefix.count)
+                    break
+                case 2:
+                    base = 8
+                    workingSubstring = input.suffix(input.count - octalPrefix.count)
+                    break
+                case 3:
+                    base = 10
+                    workingSubstring = input.suffix(input.count)
+                    break
+                case 4:
+                    base = 16
+                    workingSubstring = input.suffix(input.count - hexPrefix.count)
+                    break
+                default:
+                    exit(1)
+                }
             } else {
-                base = 10
-                workingSubstring = input.suffix(input.count)
+                // Auto detect mode
+                if input.hasPrefix(binaryPrefix) {
+                    base = 2
+                    workingSubstring = input.suffix(input.count - binaryPrefix.count)
+                } else if input.hasPrefix(hexPrefix) {
+                    base = 16
+                    workingSubstring = input.suffix(input.count - hexPrefix.count)
+                } else if input.hasPrefix(octalPrefix) {
+                    base = 8
+                    workingSubstring = input.suffix(input.count - octalPrefix.count)
+                } else {
+                    base = 10
+                    workingSubstring = input.suffix(input.count)
+                }
             }
-            
             
             // Call helper method to parse the given string
             let result = convertFrom(number: workingSubstring, base: base)

@@ -45,6 +45,9 @@
                                             <segment title="Decimal"/>
                                             <segment title="Hex"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="updateResults:" destination="BYZ-38-t0r" eventType="valueChanged" id="8wx-3Z-Qpc"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
@@ -163,6 +166,7 @@
                     <connections>
                         <outlet property="binaryTextField" destination="66K-nm-EHM" id="Y8S-SQ-dLd"/>
                         <outlet property="decimalTextField" destination="zJi-MR-bMI" id="7am-K5-zBf"/>
+                        <outlet property="detectionMode" destination="2Fg-z3-F9m" id="AO3-E5-7Re"/>
                         <outlet property="hexadecimalTextField" destination="DgH-Dg-z7E" id="LRY-N6-Vj9"/>
                         <outlet property="inputTextField" destination="cBb-Wd-Uex" id="rKR-tR-b6r"/>
                         <outlet property="octalTextField" destination="2Iu-IT-VjH" id="4SZ-d9-wVQ"/>
