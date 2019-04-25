@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h5c-Tw-Wd3">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CS_Utilities" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pMd-8e-WaQ">
-                                <rect key="frame" x="20" y="265.66666666666674" width="335" height="332.33333333333326"/>
+                                <rect key="frame" x="20" y="265.66666666666674" width="335" height="283.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AHX-Hv-M0O">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="43.333333333333336"/>
@@ -76,7 +76,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="93F-5y-QUj">
-                                        <rect key="frame" x="0.0" y="96.333333333333314" width="335" height="43.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="80" width="335" height="43.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Octal Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzh-ga-XgP">
                                                 <rect key="frame" x="0.0" y="0.0" width="92.666666666666671" height="20.333333333333332"/>
@@ -97,7 +97,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F9Z-WW-sfM">
-                                        <rect key="frame" x="0.0" y="192.66666666666663" width="335" height="43.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="160" width="335" height="43.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-Jb-Oi2">
                                                 <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="20.333333333333332"/>
@@ -106,7 +106,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Decimal Result will show Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJi-MR-bMI">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="335" height="15"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="335" height="15"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -118,7 +118,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vuE-3J-0uG">
-                                        <rect key="frame" x="0.0" y="288.99999999999994" width="335" height="43.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="240.00000000000003" width="335" height="43.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hexadecimal Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7v-xS-zMJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="150.33333333333334" height="20.333333333333332"/>
@@ -127,7 +127,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hexadecimal Result will show Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DgH-Dg-z7E">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="335" height="15"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="335" height="15"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -150,6 +150,10 @@
                                     <constraint firstItem="AHX-Hv-M0O" firstAttribute="leading" secondItem="pMd-8e-WaQ" secondAttribute="leading" id="ylR-RA-sYc"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1j-E8-LUC">
+                                <rect key="frame" x="325" y="48" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -163,6 +167,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Converter" id="gVW-lN-TbW"/>
                     <connections>
                         <outlet property="binaryTextField" destination="66K-nm-EHM" id="Y8S-SQ-dLd"/>
                         <outlet property="decimalTextField" destination="zJi-MR-bMI" id="7am-K5-zBf"/>
@@ -173,6 +178,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074.4000000000001" y="133.00492610837438"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="iol-nQ-kV4">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="h5c-Tw-Wd3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IYP-Z5-QMN">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="SBm-Nc-Gdk"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYT-rt-zIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="133.00492610837438"/>
         </scene>

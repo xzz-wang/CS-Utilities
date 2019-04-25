@@ -8,9 +8,9 @@
 
 import UIKit
 
-let binaryPrefix = "0b"
-let octalPrefix = "0"
-let hexPrefix = "0x"
+let BINARY_PREFIX = "0b"
+let OCTAL_PREFIX = "0"
+let HEX_PREFIX = "0x"
 
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -57,49 +57,62 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         var decimalValue = 0
         
-        // Cast to non-optional
-        if inputTextField.text != nil && inputTextField.text != inputTextField.placeholder && inputTextField.text != "" {
+        // Cast to non-optional, check if the input is empty
+        if isValid(input: inputTextField.text) {
             
             // Read in the input, parse base and inputNumber
             input = inputTextField.text!
             
+            // Get rid of leading and ending spaces
+            workingSubstring = Substring(input)
+            while( workingSubstring.first == " ") {
+                workingSubstring = workingSubstring.suffix(workingSubstring.count - 1)
+            }
+            while( workingSubstring.last == " ") {
+                workingSubstring = workingSubstring.prefix(workingSubstring.count - 1)
+            }
+
             // Read the base information
             if detectionMode.selectedSegmentIndex != 0 {
                 // Manual Selection Mode
                 switch(detectionMode.selectedSegmentIndex){
                 case 1:
                     base = 2
-                    workingSubstring = input.suffix(input.count - binaryPrefix.count)
+                    workingSubstring = workingSubstring.suffix(input.count - BINARY_PREFIX.count)
                     break
                 case 2:
                     base = 8
-                    workingSubstring = input.suffix(input.count - octalPrefix.count)
+                    workingSubstring = workingSubstring.suffix(input.count - OCTAL_PREFIX.count)
                     break
                 case 3:
                     base = 10
-                    workingSubstring = input.suffix(input.count)
+                    workingSubstring = workingSubstring.suffix(input.count)
                     break
                 case 4:
                     base = 16
-                    workingSubstring = input.suffix(input.count - hexPrefix.count)
+                    workingSubstring = workingSubstring.suffix(input.count - HEX_PREFIX.count)
                     break
                 default:
                     exit(1)
                 }
             } else {
                 // Auto detect mode
-                if input.hasPrefix(binaryPrefix) {
+                
+                //TODO: Detect Binary
+                if workingSubstring.hasPrefix(BINARY_PREFIX){
                     base = 2
-                    workingSubstring = input.suffix(input.count - binaryPrefix.count)
-                } else if input.hasPrefix(hexPrefix) {
+                    workingSubstring = workingSubstring.suffix(input.count - BINARY_PREFIX.count)
+                } else if isBinary(workingSubstring) {
+                    base = 2
+                } else if workingSubstring.hasPrefix(HEX_PREFIX) {
                     base = 16
-                    workingSubstring = input.suffix(input.count - hexPrefix.count)
-                } else if input.hasPrefix(octalPrefix) {
+                    workingSubstring = workingSubstring.suffix(input.count - HEX_PREFIX.count)
+                } else if workingSubstring.hasPrefix(OCTAL_PREFIX) {
                     base = 8
-                    workingSubstring = input.suffix(input.count - octalPrefix.count)
+                    workingSubstring = workingSubstring.suffix(input.count - OCTAL_PREFIX.count)
                 } else {
                     base = 10
-                    workingSubstring = input.suffix(input.count)
+                    workingSubstring = workingSubstring.suffix(input.count)
                 }
             }
             
@@ -115,17 +128,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
             } else {
                 decimalValue = result!
+                
                 // Set Decimal
                 decimalTextField.text = String(decimalValue)
             
                 // Set Binary
-                binaryTextField.text = binaryPrefix + convert(number: decimalValue, toBase: 2)!
+                binaryTextField.text = convert(number: decimalValue, toBase: 2)!
             
                 // Set Octal
-                octalTextField.text = octalPrefix + convert(number: decimalValue, toBase: 8)!
+                octalTextField.text = OCTAL_PREFIX + convert(number: decimalValue, toBase: 8)!
             
                 // Set Hexadecimal
-                hexadecimalTextField.text = hexPrefix + convert(number: decimalValue, toBase: 16)!
+                hexadecimalTextField.text = HEX_PREFIX + convert(number: decimalValue, toBase: 16)!
             }
             
         } else {
@@ -142,6 +156,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
     }
+    
     
     
     
@@ -182,6 +197,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    // Function name:   isBinary
+    // Description:     Takes in a string, check if it is only made of 1s and 0s
+    private func isBinary(_ input: Substring) -> Bool {
+        
+        for i in input {
+            if i != "0" && i != "1"{
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    
+    
+    // Function name:   isValid()
+    // Description:     Check if this text is not empty nor all spaces
+    private func isValid(input: String?) -> Bool {
+        
+        if let unwrapedStr = input {    // Check if nil
+            for char in unwrapedStr {   // Check every character
+                if char != " " { return true }  // is valid if a character is not space
+            }
+        }
+        
+        return false
+    }
     
     
     
