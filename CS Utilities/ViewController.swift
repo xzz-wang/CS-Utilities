@@ -13,7 +13,7 @@ let OCTAL_PREFIX = "0"
 let HEX_PREFIX = "0x"
 
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     // The text field for input
     @IBOutlet weak var inputTextField: UITextField!
@@ -244,7 +244,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return nil;
         }
         
-        
         // Generate the decimal
         while ( workingSubstring.count != 0 ) {
             
@@ -269,17 +268,75 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 // Error: The value is greater than base
                 return nil
             }
-            
             // Remove the right most character
             workingSubstring = workingSubstring.prefix(workingSubstring.count - 1)
             // Increment the decimal d
             digitsFromRight += 1
+        }
+        return result
+    }
+    
+    
+    
+    // MARK: Copy functionality
+    
+    @IBOutlet weak var binaryStack: UIStackView!
+    @IBOutlet weak var octalStack: UIStackView!
+    @IBOutlet weak var decimalStack: UIStackView!
+    @IBOutlet weak var hexStack: UIStackView!
+    @IBOutlet weak var resultStackView: UIStackView!
+    
+    
+    // Handles tap to copy the result
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        var tappedResult = baseType.none
+        var workingTextField : UITextField!
+        let touchedLoc = sender.location(in: resultStackView)
+        
+        // See if the tap location is in one of the stackviews
+        if binaryStack.frame.contains(touchedLoc) {
+            tappedResult = .binary
+            workingTextField = binaryTextField
+        } else if octalStack.frame.contains(touchedLoc) {
+            tappedResult = .octal
+            workingTextField = octalTextField
+        } else if decimalStack.frame.contains(touchedLoc) {
+            tappedResult = .decimal
+            workingTextField = decimalTextField
+        } else if hexStack.frame.contains(touchedLoc){
+            tappedResult = .hex
+            workingTextField = hexadecimalTextField
+        } else {
+            return
+        }
+        
+        if isValid(input: workingTextField!.text) {
+            UIPasteboard.general.string = workingTextField!.text
+            
+            // Creating an alert
+            let alert = UIAlertController(title: (tappedResult.rawValue + " result copied!"), message: "This result is copied to your clipboard", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
+                NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true)
             
         }
         
-        return result
         
     }
     
+    @IBAction func copyResult(_ sender: UITextField) {
+        
+        
+    }
+    
+    
+    enum baseType :String {
+        case binary = "Binary"
+        case octal = "Octal"
+        case decimal = "Decimal"
+        case hex = "Hexadecimal"
+        case none
+    }
 }
 
