@@ -3,3 +3,6 @@ Learning Xcode while building a tool that I might use. It can now convert number
 
 So... it's not finished, please be nice
 thx
+
+Update 2019-07-13:
+Yeah I built a new one using SwiftUI. This one is no longer in use.
